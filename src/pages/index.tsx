@@ -2,7 +2,7 @@ import React from 'react';
 import Head from 'next/head';
 
 import '../styles/index.scss';
-import Input from 'src/components/input';
+import Form from 'src/components/form';
 import List from 'src/components/list';
 
 class Home extends React.Component {
@@ -13,7 +13,7 @@ class Home extends React.Component {
           <title>Spaghetti</title>
         </Head>
         <section className="section">
-          <Input />
+          <Form />
           <List />
         </section>
       </div>

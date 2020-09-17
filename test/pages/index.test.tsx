@@ -14,10 +14,10 @@ test('renders a head component', (t) => {
   t.is(tree.find('Head').length, 1);
 });
 
-test('renders an Input component', (t) => {
+test('renders a Form component', (t) => {
   const tree = getComponent();
 
-  t.is(tree.find('Input').length, 1);
+  t.is(tree.find('Form').length, 1);
 });
 
 test('renders a List component', (t) => {
