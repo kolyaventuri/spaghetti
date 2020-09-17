@@ -13,3 +13,15 @@ test('renders a head component', (t) => {
 
   t.is(tree.find('Head').length, 1);
 });
+
+test('renders an Input component', (t) => {
+  const tree = getComponent();
+
+  t.is(tree.find('Input').length, 1);
+});
+
+test('renders a List component', (t) => {
+  const tree = getComponent();
+
+  t.is(tree.find('List').length, 1);
+});
