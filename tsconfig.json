@@ -16,19 +16,20 @@
     "isolatedModules": true,
     "allowSyntheticDefaultImports": true,
     "strict": true,
-    "jsx": "preserve",
+    "jsx": "react",
     "noUnusedLocals": true,
     "noUnusedParameters": true,
     "noImplicitAny": false,
     "baseUrl": ".",
-    "module": "esnext"
+    "module": "esnext",
+    "typeRoots": ["./src/@types", "./node_modules/@types"]
   },
   "exclude": [
-    "node_modules"
+    "node_modules",
+    "webpack"
   ],
   "include": [
-    "next-env.d.ts",
-    "src/**/*",
-    "test/**/*"
+    "src",
+    "test"
   ]
 }
