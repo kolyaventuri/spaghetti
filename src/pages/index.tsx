@@ -1,21 +1,46 @@
-import React from 'react';
+import React, {useEffect, useState} from 'react';
 import Head from 'next/head';
 
 import '../styles/index.scss';
+import Form from '../components/form';
+import List from '../components/list';
+import {Item} from '../utils/items';
 
-class Home extends React.Component {
-  render(): JSX.Element {
-    return (
-      <div>
-        <Head>
-          <title>Amplify App</title>
-        </Head>
-        <section className="section">
-          <h1>Amplify App</h1>
-        </section>
-      </div>
-    );
-  }
-}
+const Home: React.FC = () => {
+  const [items, setItems] = useState<Item[]>([]);
+  const [add, setAdd] = useState<any>(null);
+  const [remove, setRemove] = useState<any>(null);
+
+  useEffect(() => {
+    // eslint-disable-next-line @typescript-eslint/no-var-requires
+    const m = require('../utils/items');
+
+    setAdd(() => m.add);
+    setRemove(() => m.remove);
+    setItems(() => m.get());
+  }, []);
+
+  const onSubmit = (item: string): void => {
+    const newItems = add(item);
+    setItems(newItems);
+  };
+
+  const doRemove = (id: string): void => {
+    const items = remove(id);
+    setItems(items);
+  };
+
+  return (
+    <div>
+      <Head>
+        <title>Spaghetti</title>
+      </Head>
+      <section className="section">
+        <Form onSubmit={onSubmit} />
+        <List items={items} onItemRemove={doRemove} />
+      </section>
+    </div>
+  );
+};
 
 export default Home;

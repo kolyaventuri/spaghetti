@@ -17,7 +17,7 @@
     "isolatedModules": true,
     "allowSyntheticDefaultImports": true,
     "strict": true,
-    "jsx": "preserve",
+    "jsx": "react",
     "noUnusedLocals": true,
     "noUnusedParameters": true,
     "noImplicitAny": false,
@@ -33,8 +33,8 @@
     "webpack"
   ],
   "include": [
-    "next-env.d.ts",
     "src",
     "test"
   ]
 }
+

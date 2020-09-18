@@ -6,7 +6,7 @@
   "scripts": {
     "start": "next start",
     "test": "npm-run-all lint:* test:*",
-    "test:unit": "ava",
+    "test:unit": "cross-env TS_NODE_PROJECT=tsconfig.ava.json ava",
     "lint:tsc": "tsc --noEmit",
     "lint:lint": "xo --fix",
     "lint:style": "stylelint src/styles/**/*.scss",
@@ -97,7 +97,7 @@
       }
     },
     "env": [
-      "node"
+      "browser"
     ],
     "include": [
       "**/*.ts?(x)"
@@ -125,7 +125,8 @@
       "esm",
       "ts-node/register",
       "tsconfig-paths/register",
-      "./test/helpers/setup-enzyme.ts"
+      "./test/helpers/setup-enzyme.ts",
+      "./test/helpers/setup-browser.ts"
     ]
   },
   "dependencies": {
@@ -133,12 +134,14 @@
     "next": "^9.4.1",
     "node-sass": "^4.14.1",
     "react": "^16.13.1",
-    "react-dom": "^16.13.1"
+    "react-dom": "^16.13.1",
+    "uuid": "^8.3.0"
   },
   "devDependencies": {
     "@ava/babel": "^1.0.1",
     "@types/react": "^16.9.35",
     "@types/sinon": "^9.0.1",
+    "@types/uuid": "^8.3.0",
     "@typescript-eslint/eslint-plugin": "^2.33.0",
     "@typescript-eslint/parser": "^2.33.0",
     "ava": "^3.12.1",
