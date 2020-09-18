@@ -1,7 +1,11 @@
+import {v4 as uuid} from 'uuid';
 import {DEFAULT_VALUE, STORAGE_KEY} from '../constants';
 import {get as getStorage, set as setStorage, defaults} from './local-storage';
 
-export type Item = string;
+export type Item = {
+  id: string;
+  data: string;
+};
 
 export const get = (): Item[] => {
   const data = getStorage(STORAGE_KEY);
@@ -12,9 +16,10 @@ export const get = (): Item[] => {
   return [];
 };
 
-export const add = (item: Item): Item[] => {
+export const add = (data: string): Item[] => {
   const items = get();
-  const newData = [...items, item];
+  const id = uuid();
+  const newData = [...items, {id, data}];
 
   setStorage(STORAGE_KEY, JSON.stringify(newData));
 

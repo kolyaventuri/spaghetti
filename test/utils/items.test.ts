@@ -10,6 +10,7 @@ const getFn = () => {
   const defaults = stub();
 
   const {get, add, remove} = proxyquire('../../src/utils/items', {
+    uuid: {v4: () => 'uuid'},
     './local-storage': {
       get: getStub,
       set: setStub,
@@ -45,7 +46,7 @@ test('#add adds a value to the existing data', (t) => {
   getStub.returns(JSON.stringify(initial));
 
   const result = add(newItem);
-  const expected = [...initial, newItem];
+  const expected = [...initial, {id: 'uuid', data: newItem}];
 
   t.true(setStub.calledWith(STORAGE_KEY, JSON.stringify(expected)));
   t.deepEqual(result, expected);
