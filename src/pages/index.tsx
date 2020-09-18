@@ -36,6 +36,10 @@ const Home: React.FC = () => {
         <title>Spaghetti</title>
         <meta name="viewport" content="width=device-width, initial-scale=1" />
       </Head>
+      <section className="header">
+        <h1>spaghetti.</h1>
+        <p>for throwing ideas at a wall.</p>
+      </section>
       <section className="main">
         <Form onSubmit={onSubmit} />
         <List items={items} onItemRemove={doRemove} />

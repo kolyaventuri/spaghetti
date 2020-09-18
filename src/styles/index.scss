@@ -10,6 +10,22 @@ body {
   min-height: 100vh;
 }
 
+.header {
+  width: 100%;
+  text-align: center;
+  position: absolute;
+  top: 5vh;
+
+  h1 {
+    font-size: 3em;
+  }
+
+  p {
+    font-size: 1.25em;
+    color: #666;
+  }
+}
+
 .main {
   width: 100%;
   position: absolute;
