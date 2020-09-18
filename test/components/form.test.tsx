@@ -56,6 +56,21 @@ test('when the button is clicked, calls the onClick handler', (t) => {
   t.true(onSubmit.calledWith('Example'));
 });
 
+test('when the button is clicked, if the value is empty, does NOT calls the onClick handler', (t) => {
+  const onSubmit = stub();
+  const tree = render({onSubmit});
+  tree.find('input').simulate('change', {
+    target: {
+      value: ''
+    }
+  });
+  tree.update();
+
+  const button = tree.find('button');
+  button.simulate('click');
+
+  t.false(onSubmit.called);
+});
 test('if the enter button is pressed, and the textbox is empty, do nothing', (t) => {
   const onSubmit = stub();
   const tree = render({onSubmit});

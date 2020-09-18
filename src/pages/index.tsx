@@ -34,8 +34,9 @@ const Home: React.FC = () => {
     <div>
       <Head>
         <title>Spaghetti</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
       </Head>
-      <section className="section">
+      <section className="main">
         <Form onSubmit={onSubmit} />
         <List items={items} onItemRemove={doRemove} />
       </section>

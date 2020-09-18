@@ -1,9 +1,59 @@
 html, body {
   margin: 0;
   padding: 0;
+  width: 100%;
 }
 
 body {
   font-family: Arial, Helvetica, sans-serif;
-  background: #EEEEEE;
+  background: #FFF;
+  min-height: 100vh;
+}
+
+.main {
+  width: 100%;
+  position: absolute;
+  top: 25vh;
+}
+
+.form {
+  width: 60%;
+  position: relative;
+  left: 50%;
+  transform: translateX(-50%);
+
+  display: flex;
+
+  .input, .button {
+    padding: 0.5em;
+    margin: 0.5em;
+    font-size: 2em;
+
+    border: 0;
+    background: 0;
+  }
+
+  .input {
+    flex-grow: 5;
+    border-bottom: 1px solid black;
+    outline: 0;
+  }
+
+  .button {
+    flex-grow: 1;
+    font-weight: bold;
+    text-decoration: underline;
+    outline: 0;
+    
+    cursor: pointer;
+  }
+
+  @media screen and (max-width: 768px) {
+    width: 100%;
+    flex-wrap: wrap;
+    .input, .button {
+      flex-grow: 1;
+      width: 60%;
+    }
+  }
 }
