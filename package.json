@@ -6,7 +6,7 @@
   "scripts": {
     "start": "next start",
     "test": "npm-run-all lint:* test:*",
-    "test:unit": "ava",
+    "test:unit": "cross-env TS_NODE_PROJECT=tsconfig.ava.json ava",
     "lint:tsc": "tsc --noEmit",
     "lint:lint": "xo --fix",
     "lint:style": "stylelint src/styles/**/*.scss",

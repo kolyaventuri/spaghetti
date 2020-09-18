@@ -1,10 +1,10 @@
 import React, {useState} from 'react';
 
 type Props = {
-  onClick: (message: string) => void;
+  onSubmit: (message: string) => void;
 };
 
-const Form: React.FC<Props> = ({onClick}: Props) => {
+const Form: React.FC<Props> = ({onSubmit}: Props) => {
   const [value, setValue] = useState('');
 
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>): void => {
@@ -14,7 +14,7 @@ const Form: React.FC<Props> = ({onClick}: Props) => {
   };
 
   const clickHandler = (): void => {
-    onClick(value);
+    onSubmit(value);
   };
 
   return (

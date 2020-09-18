@@ -1,13 +1,26 @@
-import React from 'react';
+import React, {useEffect, useState} from 'react';
 import Head from 'next/head';
 
 import '../styles/index.scss';
-import Form from 'src/components/form';
-import List from 'src/components/list';
+import Form from '../components/form';
+import List from '../components/list';
+import {Item} from '../utils/items';
 
 const Home: React.FC = () => {
-  const onClick = (): void => {
-    console.log('TODO');
+  const [items, setItems] = useState<Item[]>([]);
+  const [add, setAdd] = useState<any>(null);
+
+  useEffect(() => {
+    // eslint-disable-next-line @typescript-eslint/no-var-requires
+    const m = require('../utils/items');
+
+    setAdd(() => m.add);
+    setItems(() => m.get());
+  }, []);
+
+  const onSubmit = (item: string): void => {
+    const newItems = add(item);
+    setItems(newItems);
   };
 
   return (
@@ -16,8 +29,8 @@ const Home: React.FC = () => {
         <title>Spaghetti</title>
       </Head>
       <section className="section">
-        <Form onClick={onClick} />
-        <List />
+        <Form onSubmit={onSubmit} />
+        <List items={items} />
       </section>
     </div>
   );

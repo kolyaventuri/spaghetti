@@ -44,11 +44,11 @@ test('#add adds a value to the existing data', (t) => {
 
   getStub.returns(JSON.stringify(initial));
 
-  add(newItem);
+  const result = add(newItem);
+  const expected = [...initial, newItem];
 
-  t.true(
-    setStub.calledWith(STORAGE_KEY, JSON.stringify([...initial, newItem]))
-  );
+  t.true(setStub.calledWith(STORAGE_KEY, JSON.stringify(expected)));
+  t.deepEqual(result, expected);
 });
 
 test('#remove deletes an item', (t) => {
@@ -57,7 +57,9 @@ test('#remove deletes an item', (t) => {
 
   getStub.returns(JSON.stringify(initial));
 
-  remove(1);
+  const result = remove(1);
+  const expected = ['item1', 'item3'];
 
-  t.true(setStub.calledWith(STORAGE_KEY, JSON.stringify(['item1', 'item3'])));
+  t.true(setStub.calledWith(STORAGE_KEY, JSON.stringify(expected)));
+  t.deepEqual(result, expected);
 });

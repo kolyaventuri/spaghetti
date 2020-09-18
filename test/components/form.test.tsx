@@ -7,7 +7,7 @@ import noop from '../helpers/noop';
 import Input from '../../src/components/form';
 
 const render = (props = {}): any => {
-  return shallow(<Input onClick={noop} {...props} />);
+  return shallow(<Input onSubmit={noop} {...props} />);
 };
 
 test('renders a text input', (t) => {
@@ -41,8 +41,8 @@ test('renders an add button', (t) => {
 });
 
 test('when the button is clicked, calls the onClick handler', (t) => {
-  const onClick = stub();
-  const tree = render({onClick});
+  const onSubmit = stub();
+  const tree = render({onSubmit});
   tree.find('input').simulate('change', {
     target: {
       value: 'Example'
@@ -53,5 +53,5 @@ test('when the button is clicked, calls the onClick handler', (t) => {
   const button = tree.find('button');
   button.simulate('click');
 
-  t.true(onClick.calledWith('Example'));
+  t.true(onSubmit.calledWith('Example'));
 });
