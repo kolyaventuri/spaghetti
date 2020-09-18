@@ -18,7 +18,6 @@ const Form: React.FC<Props> = ({onSubmit}: Props) => {
       return;
     }
 
-
     onSubmit(value);
     setValue('');
   };

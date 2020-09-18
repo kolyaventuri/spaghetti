@@ -57,3 +57,43 @@ body {
     }
   }
 }
+
+.list {
+  list-style: none;
+  width: 50%;
+  position: relative;
+  left: 50%;
+  transform: translateX(-50%);
+
+  @media screen and (max-width: 768px) {
+    width: 100%;
+  }
+
+  .item {
+    font-size: 1.25em;
+    padding: 0.25em;
+    * {
+      display: inline-block;
+    }
+
+    p {
+      left: 0;
+      width: 70%;
+    }
+
+    button {
+      position: absolute;
+      right: 0;
+      transform: translate(-150%, 25%);
+
+      padding: 0.5em;
+      border: 0;
+      outline: 0;
+      background: transparent;
+      font-weight: bold;
+      font-size: 1.25em;
+
+      cursor: pointer;
+    }
+  }
+}

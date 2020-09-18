@@ -12,9 +12,9 @@ const List: React.FC<Props> = ({items, onItemRemove}: Props) => {
   };
 
   return (
-    <ul>
+    <ul className="list">
       {items.map(({id, data}) => (
-        <li key={id}>
+        <li key={id} className="item">
           <p>{data}</p>
           <button
             type="button"
