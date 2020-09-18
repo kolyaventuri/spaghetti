@@ -9,6 +9,7 @@ import {Item} from '../utils/items';
 const Home: React.FC = () => {
   const [items, setItems] = useState<Item[]>([]);
   const [add, setAdd] = useState<any>(null);
+  const [remove, setRemove] = useState<any>(null);
 
   useEffect(() => {
     // eslint-disable-next-line @typescript-eslint/no-var-requires
@@ -16,6 +17,7 @@ const Home: React.FC = () => {
 
     setAdd(() => m.add);
     setItems(() => m.get());
+    setRemove(() => m.remove);
   }, []);
 
   const onSubmit = (item: string): void => {
@@ -30,7 +32,7 @@ const Home: React.FC = () => {
       </Head>
       <section className="section">
         <Form onSubmit={onSubmit} />
-        <List items={items} />
+        <List items={items} onItemRemove={remove} />
       </section>
     </div>
   );
