@@ -13,7 +13,11 @@ const Form: React.FC<Props> = ({onSubmit}: Props) => {
     setValue(newValue);
   };
 
-  const doSubmit = (value: string): void => {
+  const doSubmit = (): void => {
+    if (!value.trim()) {
+      return;
+    }
+
     onSubmit(value);
     setValue('');
   };
@@ -22,25 +26,24 @@ const Form: React.FC<Props> = ({onSubmit}: Props) => {
     event: React.KeyboardEvent<HTMLInputElement>
   ): void => {
     if (event?.key === 'Enter') {
-      if (value.trim()) {
-        doSubmit(value);
-      }
+      doSubmit();
     }
   };
 
   const clickHandler = (): void => {
-    doSubmit(value);
+    doSubmit();
   };
 
   return (
-    <div>
+    <div className="form">
       <input
+        className="input"
         type="text"
         value={value}
         onChange={handleChange}
         onKeyPress={handleKeyPress}
       />
-      <button type="button" onClick={clickHandler}>
+      <button className="button" type="button" onClick={clickHandler}>
         Add It
       </button>
     </div>

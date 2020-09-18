@@ -1,9 +1,115 @@
 html, body {
   margin: 0;
   padding: 0;
+  width: 100%;
 }
 
 body {
   font-family: Arial, Helvetica, sans-serif;
-  background: #EEEEEE;
+  background: #FFF;
+  min-height: 100vh;
+}
+
+.header {
+  width: 100%;
+  text-align: center;
+  position: absolute;
+  top: 5vh;
+
+  h1 {
+    font-size: 3em;
+  }
+
+  p {
+    font-size: 1.25em;
+    color: #666;
+  }
+}
+
+.main {
+  width: 100%;
+  position: absolute;
+  top: 25vh;
+}
+
+.form {
+  width: 60%;
+  position: relative;
+  left: 50%;
+  transform: translateX(-50%);
+
+  display: flex;
+
+  .input, .button {
+    padding: 0.5em;
+    margin: 0.5em;
+    font-size: 2em;
+
+    border: 0;
+    background: 0;
+  }
+
+  .input {
+    flex-grow: 5;
+    border-bottom: 1px solid black;
+    outline: 0;
+  }
+
+  .button {
+    flex-grow: 1;
+    font-weight: bold;
+    text-decoration: underline;
+    outline: 0;
+    
+    cursor: pointer;
+  }
+
+  @media screen and (max-width: 768px) {
+    width: 100%;
+    flex-wrap: wrap;
+    .input, .button {
+      flex-grow: 1;
+      width: 60%;
+    }
+  }
+}
+
+.list {
+  list-style: none;
+  width: 50%;
+  position: relative;
+  left: 50%;
+  transform: translateX(-50%);
+
+  @media screen and (max-width: 768px) {
+    width: 100%;
+  }
+
+  .item {
+    font-size: 1.25em;
+    padding: 0.25em;
+    * {
+      display: inline-block;
+    }
+
+    p {
+      left: 0;
+      width: 70%;
+    }
+
+    button {
+      position: absolute;
+      right: 0;
+      transform: translate(-150%, 25%);
+
+      padding: 0.5em;
+      border: 0;
+      outline: 0;
+      background: transparent;
+      font-weight: bold;
+      font-size: 1.25em;
+
+      cursor: pointer;
+    }
+  }
 }
