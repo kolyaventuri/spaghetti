@@ -3,23 +3,23 @@ import {Item} from '../utils/items';
 
 type Props = {
   items: Item[];
-  onItemRemove: (index: number) => void;
+  onItemRemove: (index: string) => void;
 };
 
-const List: React.FC<Props> = ({items}: Props) => {
-  const onItemClick = (index: number): void => {
-    console.log(index);
+const List: React.FC<Props> = ({items, onItemRemove}: Props) => {
+  const onItemClick = (id: string): void => {
+    onItemRemove(id);
   };
 
   return (
     <ul>
-      {items.map(({id, data}, index) => (
+      {items.map(({id, data}) => (
         <li key={id}>
           <p>{data}</p>
           <button
             type="button"
             onClick={(): void => {
-              onItemClick(index);
+              onItemClick(id);
             }}
           >
             X

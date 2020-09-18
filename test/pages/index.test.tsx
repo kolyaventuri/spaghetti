@@ -6,8 +6,9 @@ import {stub} from 'sinon';
 import delay from 'test/helpers/delay';
 
 const add = stub().callsFake((item) => [item]);
+const remove = stub().returns([{id: 'abc', data: '123'}]);
 const Home = proxyquire('../../src/pages', {
-  '../utils/items': {add}
+  '../utils/items': {add, remove}
 }).default;
 
 const getComponent = () => {
@@ -56,4 +57,25 @@ test('when onSubmit is called, updates the state and passes that down to List', 
 
   list = tree.find('List');
   t.deepEqual(list.props().items, [message]);
+});
+
+test('when onItemRemove on the List is called, it calls remove and updates the list', async (t) => {
+  const tree = getComponent();
+  let list = tree.find('List');
+
+  const id = 'some-item-id';
+  list.props().onItemRemove(id);
+
+  t.true(remove.calledWith(id));
+  await delay();
+  tree.update();
+
+  list = tree.find('List');
+
+  t.deepEqual(list.props().items, [
+    {
+      id: 'abc',
+      data: '123'
+    }
+  ]);
 });

@@ -16,13 +16,18 @@ const Home: React.FC = () => {
     const m = require('../utils/items');
 
     setAdd(() => m.add);
-    setItems(() => m.get());
     setRemove(() => m.remove);
+    setItems(() => m.get());
   }, []);
 
   const onSubmit = (item: string): void => {
     const newItems = add(item);
     setItems(newItems);
+  };
+
+  const doRemove = (id: string): void => {
+    const items = remove(id);
+    setItems(items);
   };
 
   return (
@@ -32,7 +37,7 @@ const Home: React.FC = () => {
       </Head>
       <section className="section">
         <Form onSubmit={onSubmit} />
-        <List items={items} onItemRemove={remove} />
+        <List items={items} onItemRemove={doRemove} />
       </section>
     </div>
   );
