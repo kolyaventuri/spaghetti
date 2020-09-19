@@ -20,7 +20,7 @@ Throw ideas at a wall with Spaghetti. Just jot stuff down. We don't mind.
 
 # Q + A
 ### Why?
-- I already do this in chats with my friends and I figured I'd an app*. Why not.
+- I already do this in chats with my friends and I figured I'd build an app*. Why not.
 
 
 _* A localStorage based SPA doesn't really qualify as an app but I'm chosing to ignore that._
