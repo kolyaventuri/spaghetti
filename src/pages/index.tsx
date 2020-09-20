@@ -31,6 +31,10 @@ const Home: React.FC = () => {
     setItems(items);
   };
 
+  const openBlagl = (): void => {
+    window.open('https://www.blagl.xyz/?ref=spaghetti', '_blank');
+  };
+
   return (
     <div>
       <Head>
@@ -46,7 +50,7 @@ const Home: React.FC = () => {
         <List items={items} onItemRemove={doRemove} />
       </section>
       <section className="footer">
-        <BlaglIcon size={32} />
+        <BlaglIcon size={32} onClick={openBlagl} />
       </section>
     </div>
   );
