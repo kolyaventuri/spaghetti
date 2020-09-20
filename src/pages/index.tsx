@@ -1,5 +1,6 @@
 import React, {useEffect, useState} from 'react';
 import Head from 'next/head';
+import BlaglIcon from '@kolyaventuri/blagl-icon';
 
 import '../styles/index.scss';
 import Form from '../components/form';
@@ -43,6 +44,9 @@ const Home: React.FC = () => {
       <section className="main">
         <Form onSubmit={onSubmit} />
         <List items={items} onItemRemove={doRemove} />
+      </section>
+      <section className="footer">
+        <BlaglIcon size={32} />
       </section>
     </div>
   );
