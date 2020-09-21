@@ -109,19 +109,3 @@ test('when the icon is clicked, open blagl.xyz', (t) => {
     )
   );
 });
-
-test('renders an expanding icon by default', (t) => {
-  const tree = getComponent();
-
-  const icon = tree.find('BlaglIcon');
-
-  t.is(icon.props().type, 'expanding');
-});
-
-test('renders a simple icon on mobile', (t) => {
-  const tree = getComponent();
-
-  const icon = tree.find('BlaglIcon');
-
-  t.is(icon.props().type, 'simple');
-});
