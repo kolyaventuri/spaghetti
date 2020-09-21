@@ -3,7 +3,7 @@ frontend:
   phases:
     preBuild:
       commands:
-        - echo "//registry.npmjs.org/:_authToken=${NPM_TOKEN}" >> .npmrc
+        - echo "//npm.pkg.github.com/:_authToken=${NPM_TOKEN}" >> .npmrc
         - npm install
         - npm test
     build:
