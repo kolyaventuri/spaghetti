@@ -97,9 +97,8 @@ test('renders an icon', async (t) => {
   t.is(icon.length, 1);
 });
 
-test('when the icon is clicked, open blagl.xyz', async (t) => {
+test('when the icon is clicked, open blagl.xyz', (t) => {
   const tree = getComponent();
-  await delay();
   const icon = tree.find('BlaglIcon');
   icon.props().onClick?.();
 
@@ -109,4 +108,20 @@ test('when the icon is clicked, open blagl.xyz', async (t) => {
       '_blank'
     )
   );
+});
+
+test('renders an expanding icon by default', (t) => {
+  const tree = getComponent();
+
+  const icon = tree.find('BlaglIcon');
+
+  t.is(icon.props().type, 'expanding');
+});
+
+test('renders a simple icon on mobile', (t) => {
+  const tree = getComponent();
+
+  const icon = tree.find('BlaglIcon');
+
+  t.is(icon.props().type, 'simple');
 });
