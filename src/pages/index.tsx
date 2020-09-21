@@ -1,5 +1,6 @@
 import React, {useEffect, useState} from 'react';
 import Head from 'next/head';
+import BlaglIcon from '@kolyaventuri/blagl-icon';
 
 import '../styles/index.scss';
 import Form from '../components/form';
@@ -10,6 +11,7 @@ const Home: React.FC = () => {
   const [items, setItems] = useState<Item[]>([]);
   const [add, setAdd] = useState<any>(null);
   const [remove, setRemove] = useState<any>(null);
+  const [isMobile, setMobile] = useState<boolean | null>(null);
 
   useEffect(() => {
     // eslint-disable-next-line @typescript-eslint/no-var-requires
@@ -18,6 +20,8 @@ const Home: React.FC = () => {
     setAdd(() => m.add);
     setRemove(() => m.remove);
     setItems(() => m.get());
+
+    setMobile(window.innerWidth < 768);
   }, []);
 
   const onSubmit = (item: string): void => {
@@ -30,6 +34,11 @@ const Home: React.FC = () => {
     setItems(items);
   };
 
+  const openBlagl = (): void => {
+    window.open('https://www.blagl.xyz/?ref=spaghetti', '_blank');
+  };
+
+  const type = isMobile ? 'simple' : 'expanding';
   return (
     <div>
       <Head>
@@ -43,6 +52,11 @@ const Home: React.FC = () => {
       <section className="main">
         <Form onSubmit={onSubmit} />
         <List items={items} onItemRemove={doRemove} />
+      </section>
+      <section className="footer">
+        {isMobile !== null && (
+          <BlaglIcon size={48} type={type} onClick={openBlagl} />
+        )}
       </section>
     </div>
   );

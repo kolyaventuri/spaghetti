@@ -7,9 +7,17 @@ import delay from 'test/helpers/delay';
 
 const add = stub().callsFake((item) => [item]);
 const remove = stub().returns([{id: 'abc', data: '123'}]);
+class BlaglIcon extends React.Component {
+  render() {
+    return <div />;
+  }
+}
 const Home = proxyquire('../../src/pages', {
+  '@kolyaventuri/blagl-icon': {default: BlaglIcon},
   '../utils/items': {add, remove}
 }).default;
+
+stub(window, 'open');
 
 const getComponent = () => {
   return mount(<Home />);
@@ -78,4 +86,42 @@ test('when onItemRemove on the List is called, it calls remove and updates the l
       data: '123'
     }
   ]);
+});
+
+test('renders an icon', async (t) => {
+  const tree = getComponent();
+  await delay();
+
+  const icon = tree.find('BlaglIcon');
+
+  t.is(icon.length, 1);
+});
+
+test('when the icon is clicked, open blagl.xyz', (t) => {
+  const tree = getComponent();
+  const icon = tree.find('BlaglIcon');
+  icon.props().onClick?.();
+
+  t.true(
+    (window.open as any).calledWith(
+      'https://www.blagl.xyz/?ref=spaghetti',
+      '_blank'
+    )
+  );
+});
+
+test('renders an expanding icon by default', (t) => {
+  const tree = getComponent();
+
+  const icon = tree.find('BlaglIcon');
+
+  t.is(icon.props().type, 'expanding');
+});
+
+test('renders a simple icon on mobile', (t) => {
+  const tree = getComponent();
+
+  const icon = tree.find('BlaglIcon');
+
+  t.is(icon.props().type, 'simple');
 });
