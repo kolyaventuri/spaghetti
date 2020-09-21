@@ -3,11 +3,11 @@ frontend:
   phases:
     preBuild:
       commands:
+        - echo "//registry.npmjs.org/:_authToken=${NPM_TOKEN}" >> .npmrc
         - npm install
         - npm test
     build:
       commands:
-        - npm config set '//registry.npmjs.org/:_authToken' "${NODE_AUTH_TOKEN}"
         - ENV=$BUILD_ENV npm run build
   artifacts:
     baseDirectory: /out
